@@ -3,6 +3,7 @@ namespace CarShop.DAL
     using System.Data.Entity;
 
     using CarShop.Models;
+    using CarShop.Models.Entities;
 
     public class CarShopContext : DbContext
     {
@@ -13,43 +14,43 @@ namespace CarShop.DAL
             this.Configuration.ProxyCreationEnabled = false;
         }
 
-        public virtual DbSet<CarBrands> CarBrands { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
 
-        public virtual DbSet<CarModels> CarModels { get; set; }
+        public virtual DbSet<Model> Models { get; set; }
 
-        public virtual DbSet<CarPrices> CarPrices { get; set; }
+        public virtual DbSet<ModelType> ModelTypes { get; set; }
 
-        public virtual DbSet<Cars> Cars { get; set; }
+        public virtual DbSet<Car> Cars { get; set; }
 
-        public virtual DbSet<Currencies> Currencies { get; set; }
+        public virtual DbSet<Currency> Currencies { get; set; }
+
+        public virtual DbSet<Price> Prices { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CarBrands>()
-                .HasMany(e => e.CarModels)
-                .WithRequired(e => e.CarBrands)
-                .HasForeignKey(e => e.Brand)
+            modelBuilder.Entity<Brand>()
+                .HasMany(e => e.Models)
+                .WithRequired(e => e.Brand)
+                .HasForeignKey(e => e.BrandId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<CarModels>()
+            modelBuilder.Entity<Model>()
                 .HasMany(e => e.Cars)
-                .WithRequired(e => e.CarModels)
-                .HasForeignKey(e => e.CarBrandModel)
+                .WithRequired(e => e.Model)
+                .HasForeignKey(e => e.ModelId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<CarPrices>().Property(e => e.Price).HasPrecision(30, 2);
+            modelBuilder.Entity<ModelType>()
+                .HasMany(e => e.Models)
+                .WithRequired(e => e.ModelType)
+                .HasForeignKey(e => e.ModelTypeId);
 
-            modelBuilder.Entity<Cars>()
-                .HasMany(e => e.CarPrices)
-                .WithRequired(e => e.Cars)
-                .HasForeignKey(e => e.CarId)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Car>()
+                .HasMany(e => e.Prices)
+                .WithRequired(e => e.Car)
+                .HasForeignKey(e => e.CarId);
 
-            modelBuilder.Entity<Currencies>()
-                .HasMany(e => e.CarPrices)
-                .WithRequired(e => e.Currencies)
-                .HasForeignKey(e => e.CurrencyId)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Price>().Property(e => e.Value).HasPrecision(8, 2);
         }
     }
 }

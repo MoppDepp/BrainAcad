@@ -3,7 +3,7 @@
     using CarShop.DAL;
     using CarShop.Services.Repositories;
 
-    public class FakeCarBrandsRepository : CarBrandsRepository
+    public class FakeCarBrandsRepository : GenericRepository
     {
         private static readonly FakeDbContext Context = new FakeDbContext();
 

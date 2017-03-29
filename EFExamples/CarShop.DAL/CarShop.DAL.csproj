@@ -50,24 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarShopContext.cs" />
-    <Compile Include="Migrations\201702171953342_CarEntityChanged.cs" />
-    <Compile Include="Migrations\201702171953342_CarEntityChanged.Designer.cs">
-      <DependentUpon>201702171953342_CarEntityChanged.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702171957088_ChangedCar.cs" />
-    <Compile Include="Migrations\201702171957088_ChangedCar.Designer.cs">
-      <DependentUpon>201702171957088_ChangedCar.cs</DependentUpon>
+    <Compile Include="Migrations\201703291415005_Init.cs" />
+    <Compile Include="Migrations\201703291415005_Init.Designer.cs">
+      <DependentUpon>201703291415005_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702171953342_CarEntityChanged.resx">
-      <DependentUpon>201702171953342_CarEntityChanged.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702171957088_ChangedCar.resx">
-      <DependentUpon>201702171957088_ChangedCar.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -78,6 +66,11 @@
       <Project>{ec92ddc3-104d-48c9-838e-c5a686bebb0c}</Project>
       <Name>CarShop.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201703291415005_Init.resx">
+      <DependentUpon>201703291415005_Init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

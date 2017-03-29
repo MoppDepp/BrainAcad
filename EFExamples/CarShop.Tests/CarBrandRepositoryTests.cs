@@ -17,7 +17,7 @@
 
         private Guid[] findTestCarBrandId;
 
-        private ICarBrandsRepository repository;
+        private IGenericRepository repository;
 
         private Guid updateTestCarBrandId;
 
@@ -25,7 +25,7 @@
         public void Setup()
         {
             // Setup testing data
-            this.repository = new CarBrandsRepository();
+            this.repository = new GenericRepository();
         }
 
         [TestCleanup]
