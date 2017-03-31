@@ -13,6 +13,7 @@
     using CarShop.Services;
     using CarShop.Services.Repositories;
 
+    [Authorize(Roles = "Admin")]
     public class CatalogController : Controller
     {
         private readonly ICatalogService catalogService;

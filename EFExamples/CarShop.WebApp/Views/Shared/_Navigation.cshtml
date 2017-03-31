@@ -11,7 +11,16 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("Product Catalog", "Index", "ProductCatalog")</li>
+                <li>@Html.ActionLink("Product Catalog", "Index", "Catalog")</li>
+                @if (!HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                }
+                @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    <li><a href="#">@HttpContext.Current.User.Identity.Name</a></li>
+                }
             </ul>
         </div>
     </div>
