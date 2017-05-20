@@ -1,0 +1,17 @@
+﻿@model CarShop.Models.Entities.Brand
+
+<form action="@Url.Action("Brand", "Admin")" method="post" >
+    <div class="form-group">
+        <label>Brand</label>
+        @Html.TextBoxFor(e => e.Name, new { @class = "form-control", placeholder = "Blala" })
+    </div>
+    @Html.ActionLink("Go To Google", "GoToUrl", "Admin", new { url = "https://google.com" }, null)
+    <a href="/Admin/GoToAction?someData=https://microsoft.com">Go To Microsoft</a>
+    @{
+        var a = "gsgseset";
+        var date = DateTime.UtcNow;
+    }
+
+    <span>@date</span>
+</form>
+

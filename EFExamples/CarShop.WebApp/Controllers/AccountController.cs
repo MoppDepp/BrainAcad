@@ -63,6 +63,13 @@
             }
         }
 
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            this.SignInManager.AuthenticationManager.SignOut();
+            return this.RedirectToLocal(string.Empty);
+        }
+
         [AllowAnonymous]
         public ActionResult Register()
         {

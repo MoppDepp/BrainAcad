@@ -21,10 +21,16 @@
 
         public UnitOfWork()
         {
+            
+        }
+
+        public UnitOfWork(IGenericRepository<Brand> brand)
+        {
+            this.brandsRepository = brand;
             this.context = new CarShopContext();
         }
 
-        public IGenericRepository<Brand> Brands => this.brandsRepository ?? (this.brandsRepository = new GenericRepository<Brand>(this.context));
+        public IGenericRepository<Brand> Brands => this.brandsRepository; //?? (this.brandsRepository = new GenericRepository<Brand>(this.context));
         public IGenericRepository<Model> Models => this.modelsRepository ?? (this.modelsRepository = new GenericRepository<Model>(this.context));
         public IGenericRepository<ModelType> ModelTypes => this.modelTypesRepository ?? (this.modelTypesRepository = new GenericRepository<ModelType>(this.context));
         public IGenericRepository<Car> Cars => this.carsRepository ?? (this.carsRepository = new GenericRepository<Car>(this.context));

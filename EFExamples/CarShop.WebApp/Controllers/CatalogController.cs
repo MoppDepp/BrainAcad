@@ -12,6 +12,9 @@
     using CarShop.Models.Entities;
     using CarShop.Services;
     using CarShop.Services.Repositories;
+    using CarShop.WebApp.App_Start;
+
+    using Microsoft.Practices.Unity;
 
     [Authorize(Roles = "Admin")]
     public class CatalogController : Controller
@@ -22,8 +25,9 @@
 
         public CatalogController()
         {
-            this.catalogService = new CatalogService();
-            this.unitOfWork = new UnitOfWork();
+            this.unitOfWork = UnityConfig.GetConfiguredContainer().Resolve<IUnitOfWork>();
+            //this.catalogService = new CatalogService();
+            //this.unitOfWork = new UnitOfWork();
             this.unitOfWork.Brands.Get(Guid.NewGuid());
         }
 

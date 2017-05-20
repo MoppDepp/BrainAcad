@@ -4,6 +4,8 @@
 
 namespace CarShop.WebApp
 {
+    using CarShop.WebApp.App_Start;
+
     using Owin;
 
     /// <summary>
@@ -14,6 +16,7 @@ namespace CarShop.WebApp
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            WebApiConfig.Configure(app);
         }
     }
 }

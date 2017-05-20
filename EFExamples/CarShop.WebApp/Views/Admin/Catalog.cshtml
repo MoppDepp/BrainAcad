@@ -1,0 +1,38 @@
+﻿@*<div id="CustomForm">
+    @using (Ajax.BeginForm("Catalog", "Admin", new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "CustomForm" }))
+    {
+        <div class="form-group">
+            <label>Brand</label>
+            <input type="text" id="Brand" name="Brand" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label>Model</label>
+            <input type="text" id="Model" name="Model" class="form-control"/>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    }
+</div>*@
+
+
+@using (Ajax.BeginForm("Catalog", "Admin", new AjaxOptions
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "results",
+    LoadingElementId = "loading",
+    LoadingElementDuration = 1000,
+    OnComplete = "complete"
+}))
+{
+    <input type="text" name="name" />
+    <input type="submit" value="Поиск" />
+}
+<div id="loading" style="display:none; color:Red; font-weight:bold;">
+    <p>Loading...</p>
+</div>
+<div id="results"></div>
+
+<script type="text/javascript">
+    function complete(data) {
+        //alert(data);
+    }
+</script>

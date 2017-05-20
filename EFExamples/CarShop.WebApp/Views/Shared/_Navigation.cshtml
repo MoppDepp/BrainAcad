@@ -20,6 +20,7 @@
                 @if (HttpContext.Current.User.Identity.IsAuthenticated)
                 {
                     <li><a href="#">@HttpContext.Current.User.Identity.Name</a></li>
+                    <li>@Html.ActionLink("Log out", "Logout", "Account")</li>
                 }
             </ul>
         </div>
